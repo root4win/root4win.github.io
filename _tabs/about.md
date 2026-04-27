@@ -45,7 +45,7 @@ If you're getting started in cybersecurity or exploring ethical hacking — whet
 You can find me here:
 
 - GitHub: https://github.com/root4win  
-- LinkedIn: https://linkedin.com/in/yourprofile  
+- LinkedIn: https://www.linkedin.com/in/antónio-rodrigues-55996b2ab  
 - Hack The Box: https://profile.hackthebox.com/profile/019c68bb-7975-7189-b36f-4294de0f7c9a 
 - TryHackMe: https://tryhackme.com/p/antoniosilvabrod  
 
