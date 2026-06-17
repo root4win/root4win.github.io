@@ -62,7 +62,7 @@ This blog serves as a place to document technical research, writeups, notes, and
 
 - GitHub: [root4win](https://github.com/root4win)
 - LinkedIn: [Antonio Rodrigues](https://www.linkedin.com/in/antónio-rodrigues-55996b2ab)
-- Hack The Box: [Profile](https://app.hackthebox.com/profile/019c68bb-7975-7189-b36f-4294de0f7c9a)
+- Hack The Box: [Profile](https://profile.hackthebox.com/profile/019c68bb-7975-7189-b36f-4294de0f7c9a)
 - TryHackMe: [Profile](https://tryhackme.com/p/antoniosilvabrod)
 
 ## Disclaimer
