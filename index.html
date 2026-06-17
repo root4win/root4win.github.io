@@ -4,21 +4,27 @@ layout: default
 
 <div style="text-align:center; margin-top: 120px;">
 
-  <h1>Antonio Rodrigues</h1>
+<h1>Antonio Rodrigues</h1>
 
-  <p style="font-size: 1.2rem;">
-    Offensive Security • Web Exploitation • Active Directory
-  </p>
+<p style="font-size: 1.2rem;">
+    Offensive Security • Active Directory • Red Team
+</p>
 
-  <p style="margin-top: 25px;">
-    Technical writeups, attack paths, and security research coming soon.
-  </p>
-
-  <p style="margin-top: 30px;">
-    Open to opportunities — feel free to connect or reach out on 
-    <a href="https://www.linkedin.com/in/antónio-rodrigues-55996b2ab" target="_blank">
-      LinkedIn
-    </a>.
-  </p>
+<p style="margin-top: 25px;">
+    Technical writeups, attack paths, and security research.
+</p>
 
 </div>
+
+<hr>
+
+<h2>Latest Posts</h2>
+
+<ul>
+{% for post in site.posts limit:5 %}
+  <li>
+    <a href="{{ post.url }}">{{ post.title }}</a>
+    <small>{{ post.date | date: "%d %b %Y" }}</small>
+  </li>
+{% endfor %}
+</ul>
