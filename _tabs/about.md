@@ -4,63 +4,69 @@ title: About
 permalink: /about/
 ---
 
-## About Me
+# About Me
 
-Hello!
+Hello, I'm **Antonio Rodrigues**, also known as **z2k**.
 
-My name is Antonio Rodrigues, also known as z2k.
+I'm a cybersecurity professional with a background in software development and a strong focus on offensive security, Active Directory security assessments, and penetration testing.
 
-I’m a Full Stack Developer currently transitioning into Offensive Security and Penetration Testing.
+I hold the **CPTS (Certified Penetration Testing Specialist)** certification from Hack The Box and I'm currently pursuing the **CRTO (Certified Red Team Operator)** and **CDSA (Certified Defensive Security Analyst)** certifications.
 
-I started this blog to document my journey into cybersecurity, share writeups, and break down techniques I learn along the way.
+My experience includes Active Directory exploitation, privilege escalation, lateral movement, post-exploitation, and Active Directory Certificate Services (ADCS) abuse through realistic enterprise-focused lab environments and hands-on offensive security projects.
 
-If you're getting started in cybersecurity or exploring ethical hacking — whether as a hobby or a career — I hope you find something useful here.
+Prior to cybersecurity, I worked as a Full Stack Developer, building and maintaining web applications, APIs, and backend systems. This background provides me with a strong understanding of how modern applications and infrastructures are designed, developed, and secured.
 
----
+This blog serves as a place to document technical research, writeups, notes, and lessons learned throughout my journey in offensive security.
 
-## Background
+## Certifications
 
-- Started in Machine Learning and Deep Learning:
-  - Classification problems
-  - Computer Vision
-- Transitioned into Full Stack Development:
-  - Web applications, APIs, backend systems, legacy code.
-- Strong understanding of how applications are built -> now focused on how to break them
-- Hands-on practice through platforms like Hack The Box and Try Hack Me.
+- CPTS – Certified Penetration Testing Specialist (Hack The Box)
+- CRTO – Certified Red Team Operator *(In Progress)*
+- CDSA – Certified Defensive Security Analyst *(In Progress)*
+- Cato Distinguished Support Associate
+- Cato Certified Associate
 
+## Hands-On Offensive Security Experience
 
----
+### Hack The Box Pro Labs
 
-## Current Focus
+- Dante
+- Zephyr
+- P.O.O.
 
-- Web Application Security  
-- Active Directory Attacks  
-- Privilege Escalation  
-- Real-world pentesting methodology  
+### Practical Experience
 
----
+- Solved over **100 Hack The Box machines** across Active Directory, Windows, Linux and Web environments.
+- Performed attack chains involving:
+  - Kerberoasting
+  - AS-REP Roasting
+  - NTLM Relay Attacks
+  - Active Directory Certificate Services (ADCS) Exploitation
+  - Shadow Credentials
+  - Resource-Based Constrained Delegation (RBCD)
+  - Privilege Escalation
+  - Lateral Movement & Pivoting
+  - Domain Dominance
 
-## Socials
+## Current Areas of Interest
 
-You can find me here:
+- Active Directory Security
+- Red Team Operations
+- Internal Network Penetration Testing
+- Web Application Security
+- Attack Path Analysis
+- Adversary Simulation
+- Security Automation
 
-- GitHub: https://github.com/root4win  
-- LinkedIn: https://www.linkedin.com/in/antónio-rodrigues-55996b2ab  
-- Hack The Box: https://profile.hackthebox.com/profile/019c68bb-7975-7189-b36f-4294de0f7c9a 
-- TryHackMe: https://tryhackme.com/p/antoniosilvabrod  
+## Connect With Me
 
----
+- GitHub: [root4win](https://github.com/root4win)
+- LinkedIn: [Antonio Rodrigues](https://www.linkedin.com/in/antónio-rodrigues-55996b2ab)
+- Hack The Box: [Profile](https://app.hackthebox.com/profile/019c68bb-7975-7189-b36f-4294de0f7c9a)
+- TryHackMe: [Profile](https://tryhackme.com/p/antoniosilvabrod)
 
+## Disclaimer
 
-## ⚠️ Disclaimer
+All content published on this blog is intended for educational and research purposes only.
 
-All content is for educational purposes only.
-
-I do not publish writeups for active machines or anything that violates platform rules.
-
----
-
-## Notes
-
-No rights reserved — feel free to use anything here.  
-Credit is appreciated but not required.
+I do not publish writeups for active targets, active Hack The Box machines, or any content that violates platform rules, responsible disclosure practices, or applicable laws.
