@@ -31,7 +31,6 @@ This blog serves as a place to document technical research, writeups, notes, and
 ### Hack The Box Pro Labs
 
 - Dante
-- Zephyr
 - P.O.O.
 
 ### Practical Experience
