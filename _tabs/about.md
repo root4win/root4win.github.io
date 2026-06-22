@@ -67,7 +67,7 @@ This blog serves as a collection of technical notes, research, writeups, and les
 
 ## Resume & Profiles
 
-- Resume: [Download CV](/resume.pdf)
+- Resume: [Download CV](/assets/files/cv_antonio_rodrigues.pdf)
 - GitHub: [root4win](https://github.com/root4win)
 - LinkedIn: [Antonio Rodrigues](https://www.linkedin.com/in/ant%C3%B3nio-rodrigues-55996b2ab)
 - Hack The Box: [Profile](https://profile.hackthebox.com/profile/019c68bb-7975-7189-b36f-4294de0f7c9a)
