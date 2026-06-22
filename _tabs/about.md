@@ -6,17 +6,26 @@ permalink: /about/
 
 # About Me
 
-Hello, I'm **Antonio Rodrigues**, also known as **z2k**.
+Hello, I'm **Antonio Rodrigues**.
 
-I'm a cybersecurity professional with a background in software development and a strong focus on offensive security, Active Directory security assessments, and penetration testing.
+I am an offensive security practitioner and Full Stack Developer with a strong focus on **Active Directory security assessments**, **internal network penetration testing**, and **red team operations**.
 
-I hold the **CPTS (Certified Penetration Testing Specialist)** certification from Hack The Box and I'm currently pursuing the **CRTO (Certified Red Team Operator)** and **CDSA (Certified Defensive Security Analyst)** certifications.
+I hold the **Certified Penetration Testing Specialist (CPTS)** certification from Hack The Box and I am currently pursuing the **Certified Red Team Operator (CRTO)** and **Certified Defensive Security Analyst (CDSA)** certifications.
 
-My experience includes Active Directory exploitation, privilege escalation, lateral movement, post-exploitation, and Active Directory Certificate Services (ADCS) abuse through realistic enterprise-focused lab environments and hands-on offensive security projects.
+My hands-on experience comes from extensive work in enterprise-focused lab environments, including Active Directory exploitation, privilege escalation, lateral movement, post-exploitation, and Active Directory Certificate Services (ADCS) abuse. Through these environments, I have developed practical skills in identifying attack paths, exploiting misconfigurations, and simulating real-world adversary techniques.
 
-Prior to cybersecurity, I worked as a Full Stack Developer, building and maintaining web applications, APIs, and backend systems. This background provides me with a strong understanding of how modern applications and infrastructures are designed, developed, and secured.
+Alongside my offensive security journey, I currently work as a Full Stack Developer, designing and maintaining web applications, APIs, and backend systems. This experience provides me with a strong understanding of how modern applications and infrastructures are built, deployed, and secured, allowing me to approach security assessments from both an attacker and developer perspective.
 
-This blog serves as a place to document technical research, writeups, notes, and lessons learned throughout my journey in offensive security.
+This blog serves as a collection of technical notes, research, writeups, and lessons learned throughout my journey in offensive security.
+
+## Highlights
+
+- CPTS Certified (Hack The Box)
+- CRTO *(In Progress)*
+- CDSA *(In Progress)*
+- Completed Hack The Box Pro Labs: **Dante** and **P.O.O.**
+- Solved **100+ Hack The Box machines**
+- Professional experience as a Full Stack Developer
 
 ## Certifications
 
@@ -26,26 +35,26 @@ This blog serves as a place to document technical research, writeups, notes, and
 - Cato Distinguished Support Associate
 - Cato Certified Associate
 
-## Hands-On Offensive Security Experience
+## Hands-On Experience
 
 ### Hack The Box Pro Labs
 
 - Dante
 - P.O.O.
 
-### Practical Experience
+### Technical Areas
 
-- Solved over **100 Hack The Box machines** across Active Directory, Windows, Linux and Web environments.
-- Performed attack chains involving:
-  - Kerberoasting
-  - AS-REP Roasting
-  - NTLM Relay Attacks
-  - Active Directory Certificate Services (ADCS) Exploitation
-  - Shadow Credentials
-  - Resource-Based Constrained Delegation (RBCD)
-  - Privilege Escalation
-  - Lateral Movement & Pivoting
-  - Domain Dominance
+- Active Directory Security Assessments
+- Kerberoasting
+- AS-REP Roasting
+- NTLM Relay Attacks
+- Active Directory Certificate Services (ADCS) Exploitation
+- Shadow Credentials
+- Resource-Based Constrained Delegation (RBCD)
+- Privilege Escalation
+- Lateral Movement & Pivoting
+- Attack Path Analysis
+- Domain Dominance
 
 ## Current Areas of Interest
 
@@ -53,19 +62,12 @@ This blog serves as a place to document technical research, writeups, notes, and
 - Red Team Operations
 - Internal Network Penetration Testing
 - Web Application Security
-- Attack Path Analysis
 - Adversary Simulation
 - Security Automation
 
-## Connect With Me
+## Resume & Profiles
 
+- Resume: [Download CV](/resume.pdf)
 - GitHub: [root4win](https://github.com/root4win)
-- LinkedIn: [Antonio Rodrigues](https://www.linkedin.com/in/antónio-rodrigues-55996b2ab)
+- LinkedIn: [Antonio Rodrigues](https://www.linkedin.com/in/ant%C3%B3nio-rodrigues-55996b2ab)
 - Hack The Box: [Profile](https://profile.hackthebox.com/profile/019c68bb-7975-7189-b36f-4294de0f7c9a)
-- TryHackMe: [Profile](https://tryhackme.com/p/antoniosilvabrod)
-
-## Disclaimer
-
-All content published on this blog is intended for educational and research purposes only.
-
-I do not publish writeups for active targets, active Hack The Box machines, or any content that violates platform rules, responsible disclosure practices, or applicable laws.
