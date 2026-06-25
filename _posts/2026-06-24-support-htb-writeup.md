@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Support - HackTheBox Writeup"
-date: 2025-01-01
+date: 2026-06-24
 categories: [HackTheBox, ActiveDirectory]
 tags: [smb, ldap, bloodhound, rbcd, kerberos]
 ---
