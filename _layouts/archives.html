@@ -1,0 +1,495 @@
+---
+layout: default
+---
+
+<style>
+/* ── Scanline overlay ────────────────────────────────────── */
+.arc-wrap {
+  position: relative;
+}
+
+.arc-wrap::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,255,159,0.015) 2px,
+    rgba(0,255,159,0.015) 4px
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Header ──────────────────────────────────────────────── */
+.arc-header {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #21262d;
+}
+
+.arc-header__glitch {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #00ff9f;
+  letter-spacing: -0.02em;
+  position: relative;
+  display: inline-block;
+}
+
+.arc-header__glitch::before,
+.arc-header__glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+}
+
+.arc-header__glitch::before {
+  color: #ff0066;
+  animation: glitch-1 4s infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 40%, 0 40%);
+}
+
+.arc-header__glitch::after {
+  color: #00d4ff;
+  animation: glitch-2 4s infinite;
+  clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%);
+}
+
+@keyframes glitch-1 {
+  0%, 90%, 100% { transform: translate(0); opacity: 0; }
+  92%           { transform: translate(-2px, 1px); opacity: 0.8; }
+  94%           { transform: translate(2px, -1px); opacity: 0.8; }
+  96%           { transform: translate(0); opacity: 0; }
+}
+
+@keyframes glitch-2 {
+  0%, 90%, 100% { transform: translate(0); opacity: 0; }
+  93%           { transform: translate(2px, 1px); opacity: 0.8; }
+  95%           { transform: translate(-2px, -1px); opacity: 0.8; }
+  97%           { transform: translate(0); opacity: 0; }
+}
+
+.arc-header__meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: #8b949e;
+  margin-top: 8px;
+}
+
+.arc-header__meta span {
+  color: #00ff9f;
+}
+
+/* ── Search & Filter ─────────────────────────────────────── */
+.arc-controls {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: 12px;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.arc-search {
+  flex: 1;
+  min-width: 200px;
+  background: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  padding: 8px 14px 8px 36px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  color: #e6edf3;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  position: relative;
+}
+
+.arc-search:focus {
+  border-color: #00ff9f;
+  box-shadow: 0 0 0 3px rgba(0,255,159,0.1);
+}
+
+.arc-search::placeholder {
+  color: #484f58;
+}
+
+.arc-search-wrap {
+  position: relative;
+  flex: 1;
+  min-width: 200px;
+}
+
+.arc-search-wrap::before {
+  content: '⌕';
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #484f58;
+  font-size: 1rem;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.arc-filter-btn {
+  background: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  color: #8b949e;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.arc-filter-btn:hover,
+.arc-filter-btn.active {
+  border-color: #00ff9f;
+  color: #00ff9f;
+  background: rgba(0,255,159,0.05);
+}
+
+/* ── Stats bar ───────────────────────────────────────────── */
+.arc-statsbar {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: 24px;
+  margin-bottom: 2rem;
+  padding: 12px 16px;
+  background: #161b22;
+  border: 1px solid #21262d;
+  border-radius: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  color: #8b949e;
+  flex-wrap: wrap;
+}
+
+.arc-statsbar__item strong {
+  color: #00ff9f;
+  margin-right: 4px;
+}
+
+/* ── Post grid ───────────────────────────────────────────── */
+.arc-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.arc-card {
+  background: #0d1117;
+  border: 1px solid #21262d;
+  border-radius: 8px;
+  padding: 20px;
+  text-decoration: none !important;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* Retro corner decoration */
+.arc-card::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 0; height: 0;
+  border-style: solid;
+  border-width: 0 28px 28px 0;
+  border-color: transparent #21262d transparent transparent;
+  transition: border-color 0.2s;
+}
+
+.arc-card:hover {
+  border-color: #00ff9f44;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(0,255,159,0.1);
+  text-decoration: none !important;
+}
+
+.arc-card:hover::before {
+  border-color: transparent #00ff9f44 transparent transparent;
+}
+
+/* Retro scan line on hover */
+.arc-card::after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 60%;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(0,255,159,0.03),
+    transparent
+  );
+  transition: top 0.6s ease;
+  pointer-events: none;
+}
+
+.arc-card:hover::after {
+  top: 150%;
+}
+
+.arc-card__index {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  color: #484f58;
+  margin-bottom: 10px;
+}
+
+.arc-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.arc-card__cat {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  background: rgba(0,255,159,0.08);
+  color: #00ff9f;
+  border: 1px solid rgba(0,255,159,0.2);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.arc-card__tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  background: rgba(255,255,255,0.04);
+  color: #8b949e;
+  border: 1px solid #30363d;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.arc-card__title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #e6edf3;
+  margin: 0 0 8px;
+  line-height: 1.4;
+  flex: 1;
+}
+
+.arc-card:hover .arc-card__title {
+  color: #00ff9f;
+}
+
+.arc-card__desc {
+  font-size: 0.8rem;
+  color: #8b949e;
+  line-height: 1.5;
+  margin: 0 0 14px;
+  flex: 1;
+}
+
+.arc-card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #21262d;
+  padding-top: 10px;
+  margin-top: auto;
+}
+
+.arc-card__date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: #484f58;
+}
+
+.arc-card__arrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: #00ff9f;
+  opacity: 0;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.arc-card:hover .arc-card__arrow {
+  opacity: 1;
+  transform: translateX(4px);
+}
+
+/* ── No results ──────────────────────────────────────────── */
+.arc-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 3rem;
+  font-family: 'JetBrains Mono', monospace;
+  color: #484f58;
+  display: none;
+}
+
+.arc-empty__code {
+  font-size: 2rem;
+  color: #30363d;
+  margin-bottom: 8px;
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .arc-grid { grid-template-columns: 1fr; }
+  .arc-header__glitch { font-size: 1.4rem; }
+}
+</style>
+
+<div class="arc-wrap">
+
+  <!-- Header -->
+  <div class="arc-header">
+    <div class="arc-header__glitch" data-text="// writeups">// writeups</div>
+    <div class="arc-header__meta">
+      <span>{{ site.posts | size }}</span> posts indexed ·
+      last updated <span>{{ site.posts.first.date | date: "%d %b %Y" }}</span>
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <div class="arc-controls">
+    <div class="arc-search-wrap">
+      <input
+        class="arc-search"
+        type="text"
+        id="arc-search-input"
+        placeholder="search posts..."
+        autocomplete="off"
+      >
+    </div>
+    <button class="arc-filter-btn active" data-filter="all">all</button>
+    {% assign all_cats = site.posts | map: "categories" | join: "," | split: "," | uniq | sort %}
+    {% for cat in all_cats %}
+      {% if cat != "" %}
+      <button class="arc-filter-btn" data-filter="{{ cat | downcase }}">{{ cat | downcase }}</button>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <!-- Stats bar -->
+  <div class="arc-statsbar">
+    {% assign all_tags = site.posts | map: "tags" | join: "," | split: "," | uniq %}
+    <div class="arc-statsbar__item"><strong>{{ site.posts | size }}</strong> writeups</div>
+    <div class="arc-statsbar__item"><strong>{{ all_cats | size }}</strong> categories</div>
+    <div class="arc-statsbar__item"><strong>{{ all_tags | size }}</strong> tags</div>
+    <div class="arc-statsbar__item" id="arc-showing"><strong>{{ site.posts | size }}</strong> showing</div>
+  </div>
+
+  <!-- Grid -->
+  <div class="arc-grid" id="arc-grid">
+    {% assign i = 0 %}
+    {% for post in site.posts %}
+    {% assign i = i | plus: 1 %}
+    <a
+      href="{{ post.url }}"
+      class="arc-card"
+      data-title="{{ post.title | downcase }}"
+      data-cats="{{ post.categories | join: ',' | downcase }}"
+      data-tags="{{ post.tags | join: ',' | downcase }}"
+    >
+      <div class="arc-card__index">[{{ i | prepend: '00' | slice: -3, 3 }}]</div>
+      <div class="arc-card__tags">
+        {% for cat in post.categories limit:1 %}
+        <span class="arc-card__cat">{{ cat }}</span>
+        {% endfor %}
+        {% for tag in post.tags limit:3 %}
+        <span class="arc-card__tag">{{ tag }}</span>
+        {% endfor %}
+      </div>
+      <div class="arc-card__title">{{ post.title }}</div>
+      {% if post.description %}
+      <div class="arc-card__desc">{{ post.description }}</div>
+      {% elsif post.excerpt %}
+      <div class="arc-card__desc">{{ post.excerpt | strip_html | truncate: 110 }}</div>
+      {% endif %}
+      <div class="arc-card__footer">
+        <span class="arc-card__date">{{ post.date | date: "%d %b %Y" }}</span>
+        <span class="arc-card__arrow">→ read</span>
+      </div>
+    </a>
+    {% endfor %}
+
+    <div class="arc-empty" id="arc-empty">
+      <div class="arc-empty__code">404</div>
+      <div>no posts found</div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const cards   = Array.from(document.querySelectorAll('.arc-card'));
+const search  = document.getElementById('arc-search-input');
+const filters = document.querySelectorAll('.arc-filter-btn');
+const showing = document.getElementById('arc-showing');
+const empty   = document.getElementById('arc-empty');
+
+let activeFilter = 'all';
+
+function filterCards() {
+  const q = search.value.toLowerCase().trim();
+  let count = 0;
+
+  cards.forEach(card => {
+    const title = card.dataset.title || '';
+    const cats  = card.dataset.cats  || '';
+    const tags  = card.dataset.tags  || '';
+
+    const matchesSearch = !q || title.includes(q) || cats.includes(q) || tags.includes(q);
+    const matchesFilter = activeFilter === 'all' || cats.includes(activeFilter);
+
+    if (matchesSearch && matchesFilter) {
+      card.style.display = 'flex';
+      count++;
+    } else {
+      card.style.display = 'none';
+    }
+  });
+
+  showing.innerHTML = `<strong>${count}</strong> showing`;
+  empty.style.display = count === 0 ? 'block' : 'none';
+}
+
+search.addEventListener('input', filterCards);
+
+filters.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filters.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeFilter = btn.dataset.filter;
+    filterCards();
+  });
+});
+
+/* Fade-in on load */
+cards.forEach((card, i) => {
+  card.style.opacity = '0';
+  card.style.transform = 'translateY(16px)';
+  card.style.transition = 'opacity 0.4s ease, transform 0.4s ease, border-color 0.2s, box-shadow 0.2s';
+  setTimeout(() => {
+    card.style.opacity = '1';
+    card.style.transform = 'translateY(0)';
+  }, 60 + i * 60);
+});
+</script>
