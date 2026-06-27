@@ -2,29 +2,435 @@
 layout: default
 ---
 
-<div style="text-align:center; margin-top: 120px;">
+<!-- ── Hero ────────────────────────────────────────────── -->
+<section class="rw-hero">
+  <div class="rw-hero__terminal">
+    <div class="rw-terminal__bar">
+      <span class="rw-dot rw-dot--red"></span>
+      <span class="rw-dot rw-dot--yellow"></span>
+      <span class="rw-dot rw-dot--green"></span>
+      <span class="rw-terminal__title">root@kali ~ $</span>
+    </div>
+    <div class="rw-terminal__body">
+      <p class="rw-terminal__line">
+        <span class="rw-t-prompt">root@kali:~$</span>
+        <span class="rw-t-cmd"> whoami</span>
+      </p>
+      <p class="rw-terminal__output">antónio rodrigues</p>
 
-<h1>Antonio Rodrigues</h1>
+      <p class="rw-terminal__line">
+        <span class="rw-t-prompt">root@kali:~$</span>
+        <span class="rw-t-cmd"> cat /etc/roles</span>
+      </p>
+      <p class="rw-terminal__output">offensive security | active directory | red team | full stack dev</p>
 
-<p style="font-size: 1.2rem;">
-    Offensive Security • Active Directory • Red Team
-</p>
+      <p class="rw-terminal__line">
+        <span class="rw-t-prompt">root@kali:~$</span>
+        <span class="rw-t-cmd"> cat /etc/certs</span>
+      </p>
+      <p class="rw-terminal__output">
+        <span class="rw-badge rw-badge--green">✓ CPTS</span>
+        <span class="rw-badge rw-badge--yellow">⟳ CRTO</span>
+        <span class="rw-badge rw-badge--yellow">⟳ CDSA</span>
+      </p>
 
-<p style="margin-top: 25px;">
-    Technical writeups, attack paths, and security research.
-</p>
+      <p class="rw-terminal__line">
+        <span class="rw-t-prompt">root@kali:~$</span>
+        <span class="rw-t-cmd"> cat /etc/stats</span>
+      </p>
+      <p class="rw-terminal__output">
+        <span class="rw-stat">100+ machines pwned</span> ·
+        <span class="rw-stat">Pro Labs: Dante, P.O.O.</span>
+      </p>
 
-</div>
+      <p class="rw-terminal__line">
+        <span class="rw-t-prompt">root@kali:~$</span>
+        <span class="rw-t-cursor">█</span>
+      </p>
+    </div>
+  </div>
+</section>
 
-<hr>
+<!-- ── Stats ────────────────────────────────────────────── -->
+<section class="rw-stats">
+  <div class="rw-stat-card">
+    <div class="rw-stat-card__num">100+</div>
+    <div class="rw-stat-card__label">HTB Machines</div>
+  </div>
+  <div class="rw-stat-card">
+    <div class="rw-stat-card__num">2</div>
+    <div class="rw-stat-card__label">Pro Labs</div>
+  </div>
+  <div class="rw-stat-card">
+    <div class="rw-stat-card__num">3</div>
+    <div class="rw-stat-card__label">Certs</div>
+  </div>
+  <div class="rw-stat-card">
+    <div class="rw-stat-card__num">{{ site.posts | size }}</div>
+    <div class="rw-stat-card__label">Writeups</div>
+  </div>
+</section>
 
-<h2>Latest Posts</h2>
+<!-- ── Latest Posts ──────────────────────────────────────── -->
+<section class="rw-posts">
+  <h2 class="rw-section-title">
+    <span class="rw-section-title__prompt">$</span> latest writeups
+  </h2>
 
-<ul>
-{% for post in site.posts limit:5 %}
-  <li>
-    <a href="{{ post.url }}">{{ post.title }}</a>
-    <small>{{ post.date | date: "%d %b %Y" }}</small>
-  </li>
-{% endfor %}
-</ul>
+  <div class="rw-post-grid">
+    {% for post in site.posts limit:6 %}
+    <a href="{{ post.url }}" class="rw-post-card">
+      <div class="rw-post-card__top">
+        {% if post.categories.size > 0 %}
+        <span class="rw-post-card__cat">{{ post.categories | first }}</span>
+        {% endif %}
+        {% for tag in post.tags limit:2 %}
+        <span class="rw-post-card__tag">{{ tag }}</span>
+        {% endfor %}
+      </div>
+      <h3 class="rw-post-card__title">{{ post.title }}</h3>
+      {% if post.description %}
+      <p class="rw-post-card__desc">{{ post.description }}</p>
+      {% elsif post.excerpt %}
+      <p class="rw-post-card__desc">{{ post.excerpt | strip_html | truncate: 100 }}</p>
+      {% endif %}
+      <div class="rw-post-card__footer">
+        <span class="rw-post-card__date">{{ post.date | date: "%d %b %Y" }}</span>
+        <span class="rw-post-card__arrow">→</span>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- ── Focus Areas ───────────────────────────────────────── -->
+<section class="rw-focus">
+  <h2 class="rw-section-title">
+    <span class="rw-section-title__prompt">$</span> focus areas
+  </h2>
+  <div class="rw-focus-grid">
+    <div class="rw-focus-card">
+      <div class="rw-focus-card__icon">⚔️</div>
+      <h3>Active Directory</h3>
+      <p>Kerberoasting, AS-REP Roasting, NTLM Relay, ADCS, Shadow Credentials, RBCD</p>
+    </div>
+    <div class="rw-focus-card">
+      <div class="rw-focus-card__icon">🔴</div>
+      <h3>Red Team Ops</h3>
+      <p>Lateral movement, pivoting, C2 frameworks, adversary simulation, domain dominance</p>
+    </div>
+    <div class="rw-focus-card">
+      <div class="rw-focus-card__icon">🌐</div>
+      <h3>Web Security</h3>
+      <p>Web application pentesting, API security, auth bypasses, injection attacks</p>
+    </div>
+    <div class="rw-focus-card">
+      <div class="rw-focus-card__icon">⚙️</div>
+      <h3>Full Stack Dev</h3>
+      <p>Building and breaking — understanding systems from both sides of the fence</p>
+    </div>
+  </div>
+</section>
+
+<style>
+/* ── Hero ────────────────────────────────────────────────── */
+.rw-hero {
+  margin: 2rem 0 3rem;
+}
+
+.rw-hero__terminal {
+  background: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 10px;
+  overflow: hidden;
+  font-family: 'JetBrains Mono', monospace;
+  box-shadow: 0 0 40px rgba(0,255,159,0.08);
+}
+
+.rw-terminal__bar {
+  background: #161b22;
+  border-bottom: 1px solid #30363d;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rw-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+.rw-dot--red    { background: #ff5f57; }
+.rw-dot--yellow { background: #febc2e; }
+.rw-dot--green  { background: #28c840; }
+
+.rw-terminal__title {
+  margin-left: 8px;
+  font-size: 0.75rem;
+  color: #8b949e;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.rw-terminal__body {
+  padding: 20px 24px 28px;
+}
+
+.rw-terminal__line {
+  margin: 0 0 4px;
+  font-size: 0.9rem;
+}
+
+.rw-t-prompt {
+  color: #00ff9f;
+  font-weight: 700;
+}
+
+.rw-t-cmd {
+  color: #e6edf3;
+}
+
+.rw-terminal__output {
+  color: #8b949e;
+  margin: 0 0 16px 0;
+  padding-left: 1rem;
+  font-size: 0.88rem;
+}
+
+.rw-t-cursor {
+  color: #00ff9f;
+  animation: blink-cursor 1s step-end infinite;
+}
+
+@keyframes blink-cursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.rw-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  padding: 2px 10px;
+  border-radius: 4px;
+  margin-right: 6px;
+  font-family: 'JetBrains Mono', monospace;
+}
+.rw-badge--green  { background: #00ff9f22; color: #00ff9f; border: 1px solid #00ff9f44; }
+.rw-badge--yellow { background: #febc2e22; color: #febc2e; border: 1px solid #febc2e44; }
+
+.rw-stat {
+  color: #e6edf3;
+}
+
+/* ── Stats ───────────────────────────────────────────────── */
+.rw-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 3rem;
+}
+
+.rw-stat-card {
+  background: #161b22;
+  border: 1px solid #21262d;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.rw-stat-card:hover {
+  border-color: #00ff9f44;
+  box-shadow: 0 0 20px rgba(0,255,159,0.08);
+}
+
+.rw-stat-card__num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #00ff9f;
+}
+
+.rw-stat-card__label {
+  font-size: 0.75rem;
+  color: #8b949e;
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ── Section title ───────────────────────────────────────── */
+.rw-section-title {
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 1rem !important;
+  color: #8b949e !important;
+  text-transform: lowercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.5rem;
+  border: none !important;
+}
+
+.rw-section-title__prompt {
+  color: #00ff9f;
+  margin-right: 6px;
+}
+
+/* ── Post cards ──────────────────────────────────────────── */
+.rw-post-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 3rem;
+}
+
+.rw-post-card {
+  display: block;
+  background: #161b22;
+  border: 1px solid #21262d;
+  border-radius: 8px;
+  padding: 20px;
+  text-decoration: none !important;
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  border-left: 3px solid transparent;
+}
+
+.rw-post-card:hover {
+  border-color: #30363d;
+  border-left-color: #00ff9f;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  text-decoration: none !important;
+}
+
+.rw-post-card__top {
+  margin-bottom: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.rw-post-card__cat {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  background: #00ff9f22;
+  color: #00ff9f;
+  border: 1px solid #00ff9f33;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.rw-post-card__tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  background: #ffffff0a;
+  color: #8b949e;
+  border: 1px solid #30363d;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.rw-post-card__title {
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 0.95rem !important;
+  color: #e6edf3 !important;
+  margin: 0 0 8px !important;
+  line-height: 1.4;
+  border: none !important;
+}
+
+.rw-post-card__desc {
+  font-size: 0.82rem;
+  color: #8b949e;
+  margin: 0 0 14px;
+  line-height: 1.5;
+}
+
+.rw-post-card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rw-post-card__date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: #484f58;
+}
+
+.rw-post-card__arrow {
+  color: #00ff9f;
+  font-size: 0.9rem;
+  opacity: 0;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.rw-post-card:hover .rw-post-card__arrow {
+  opacity: 1;
+  transform: translateX(4px);
+}
+
+/* ── Focus areas ─────────────────────────────────────────── */
+.rw-focus-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 3rem;
+}
+
+.rw-focus-card {
+  background: #161b22;
+  border: 1px solid #21262d;
+  border-radius: 8px;
+  padding: 20px;
+  transition: border-color 0.2s;
+}
+
+.rw-focus-card:hover {
+  border-color: #00ff9f33;
+}
+
+.rw-focus-card__icon {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+.rw-focus-card h3 {
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 0.9rem !important;
+  color: #e6edf3 !important;
+  margin: 0 0 8px !important;
+  border: none !important;
+}
+
+.rw-focus-card p {
+  font-size: 0.82rem;
+  color: #8b949e;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .rw-stats        { grid-template-columns: repeat(2, 1fr); }
+  .rw-post-grid    { grid-template-columns: 1fr; }
+  .rw-focus-grid   { grid-template-columns: 1fr; }
+}
+</style>
+
+<script>
+/* Fade-in nos post cards */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.style.opacity = '1', i * 80);
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.rw-post-card').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transition = 'opacity 0.4s ease, border-color 0.2s, transform 0.2s, box-shadow 0.2s';
+  observer.observe(el);
+});
+</script>
