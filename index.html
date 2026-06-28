@@ -434,3 +434,83 @@ document.querySelectorAll('.rw-post-card').forEach(el => {
   observer.observe(el);
 });
 </script>
+
+<!-- ── Disclosure ─────────────────────────────────────────── -->
+<section class="rw-disclosure">
+  <div class="rw-disclosure__inner">
+    <div class="rw-disclosure__header">
+      <span class="rw-disclosure__icon">⚠</span>
+      <span class="rw-disclosure__title">Legal Disclosure</span>
+    </div>
+    <div class="rw-disclosure__body">
+      <p>
+        All content published on this site — including writeups, walkthroughs, and technical research — is intended
+        <strong>strictly for educational and informational purposes</strong>. The techniques and tools described are
+        discussed solely in the context of authorized environments such as
+        <strong>Hack The Box</strong>, <strong>TryHackMe</strong>, and other legal penetration testing platforms.
+      </p>
+      <p>
+        Applying any of the techniques described here against systems, networks, or infrastructure
+        <strong>without explicit written authorization</strong> is illegal and unethical.
+        The author assumes <strong>no responsibility</strong> for any misuse of the information provided.
+      </p>
+      <p>
+        Always obtain proper authorization before conducting any security assessment.
+        <strong>Hack responsibly.</strong>
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+.rw-disclosure {
+  margin: 1rem 0 3rem;
+  position: relative;
+  z-index: 1;
+}
+
+.rw-disclosure__inner {
+  background: #0d1117;
+  border: 1px solid #febc2e33;
+  border-left: 3px solid #febc2e;
+  border-radius: 0 8px 8px 0;
+  padding: 18px 20px;
+}
+
+.rw-disclosure__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.rw-disclosure__icon {
+  color: #febc2e;
+  font-size: 0.9rem;
+}
+
+.rw-disclosure__title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #febc2e;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.rw-disclosure__body p {
+  font-size: 0.8rem;
+  color: #8b949e;
+  line-height: 1.6;
+  margin: 0 0 8px;
+}
+
+.rw-disclosure__body p:last-child {
+  margin: 0;
+}
+
+.rw-disclosure__body strong {
+  color: #e6edf3;
+  font-weight: 600;
+}
+</style>
