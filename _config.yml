@@ -1,4 +1,5 @@
 theme: jekyll-theme-chirpy
+theme_mode: dark
 
 lang: en
 timezone: Europe/Lisbon
