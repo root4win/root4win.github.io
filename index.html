@@ -2,6 +2,95 @@
 layout: default
 ---
 
+<!-- ── Open to Work ──────────────────────────────────────── -->
+<section class="rw-hire">
+  <div class="rw-hire__inner">
+    <span class="rw-hire__pulse"></span>
+    <div class="rw-hire__text">
+      <span class="rw-hire__status">[STATUS] open_to_work = <strong>true</strong></span>
+      <span class="rw-hire__msg">Any job offer is welcome — make your offer, let's make it happen.</span>
+    </div>
+    <a href="https://www.linkedin.com/in/ant%C3%B3nio-rodrigues-55996b2ab/" target="_blank" rel="noopener" class="rw-hire__btn">./contact_me</a>
+  </div>
+</section>
+
+<style>
+.rw-hire {
+  margin: 2rem 0 0;
+}
+
+.rw-hire__inner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #0d1117;
+  border: 1px solid #00ff9f44;
+  border-radius: 8px;
+  padding: 14px 18px;
+  box-shadow: 0 0 24px rgba(0,255,159,0.07);
+  flex-wrap: wrap;
+}
+
+.rw-hire__pulse {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #00ff9f;
+  flex-shrink: 0;
+  animation: rw-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes rw-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0,255,159,0.5); }
+  50%      { box-shadow: 0 0 0 8px rgba(0,255,159,0); }
+}
+
+.rw-hire__text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 200px;
+}
+
+.rw-hire__status {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: #8b949e;
+}
+
+.rw-hire__status strong {
+  color: #00ff9f;
+}
+
+.rw-hire__msg {
+  font-size: 0.88rem;
+  color: #e6edf3;
+}
+
+.rw-hire__btn {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: #00ff9f !important;
+  background: #00ff9f15;
+  border: 1px solid #00ff9f55;
+  border-radius: 6px;
+  padding: 8px 16px;
+  text-decoration: none !important;
+  transition: background 0.2s, box-shadow 0.2s;
+  white-space: nowrap;
+}
+
+.rw-hire__btn:hover {
+  background: #00ff9f25;
+  box-shadow: 0 0 16px rgba(0,255,159,0.2);
+}
+
+@media (max-width: 600px) {
+  .rw-hire__inner { flex-direction: column; align-items: flex-start; }
+}
+</style>
+
 <!-- ── Hero ────────────────────────────────────────────── -->
 <section class="rw-hero">
   <div class="rw-hero__terminal">
